@@ -463,6 +463,31 @@ cout << Lesson.teacher_put_score[andis_1][andis_2] << endl;
 
 }
 
+void See_homework(string lesson)
+{
+
+teacher Teacher;
+
+int andis = 0;
+
+for(string i: Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+cout << teacher.homework[andis] << endl;
+
+}
+
 ~student()
 {}
 
