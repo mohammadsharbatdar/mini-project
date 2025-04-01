@@ -26,6 +26,8 @@ vector<int> Lessons_Capacity;
 
 vector<int> classroom_number;
 
+vector<int> partical_unit;
+
 ~lesson()
 {}
 
