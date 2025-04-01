@@ -340,7 +340,41 @@ Lesson.Students_List[andis].push_back(Name);
 
 public:
 
+bool student_position = true;
+
 friend void Add_Lesson(string lesson, string Name);
+
+void See_Empty_Capacity(string lesson)
+{
+
+int andis = 0;
+
+int size;
+
+for(string i: Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+size = Lesson.Lessons_Capacity[andis] - Lesson.Students_List[andis].size();
+
+if(size >= 0)
+{
+
+cout << size << endl;
+
+}
+
+}
 
 ~student()
 {}
