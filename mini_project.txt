@@ -43,10 +43,118 @@ lesson Lesson;
 
 class teacher {
 
+private:
+
+static void create_lesson(string Name, int Capacity, int Partical_Unit, int Theory_Unit, int Classroom_Name, string Classroom_Time, string Theacher_Name)
+{
+
+Name = Name + " : " + Theacher_Name;
+
+Lesson.Lessons_List.push_back(Name);
+
+Lesson.Lessons_Capacity.push_back(Capacity);
+
+Lesson.partical_unit.push_back(Partical_Unit);
+
+Lesson.theory_unit.push_back(Theory_Unit);
+
+Lesson.classroom_number.push_back(Classroom_Number);
+
+Lesson.classroom_time.push_back(Classroom_Time);
+
+ofstream file("lesson.txt");
+
+file << "Units:\n";
+
+for(int i = 0; i < Lesson.Lessons_List.size(); i++)
+{
+
+file << "partical unit:\t";
+
+file << LEsson.partical_unit[i];
+
+file << "\t theory unit:\t";
+
+file << Lesson.theory_unit[i];
+
+file << "\n";
+
+}
+
+file << "\n";
+
+file << "classroom numbers:\n";
+
+for(inti = 0; i < Lesson.Lessons_List.size(); i++)
+{
+
+file << Lesson.classroom_number[i];
+
+file << "\n";
+
+}
+
+file << "\n";
+
+file << "classroom time:\n";
+
+for(int i = 0; i < Lesson.Lessons_List.size(); i++)
+{
+
+file << Lesson.classroom_time[i];
+
+file << "\n";
+
+file << "attendance list:\n";
+
+for(int i = 0; i < Lesson.Lessons_List.size(); i++)
+{
+
+file << "present:\n";
+
+file << Lesson.present_list[i];
+
+file << "\tabsent:\t";
+
+file << Lesson.absent_List[i];
+
+file << "\n";
+
+}
+
+file << "\n";
+
+file.close();
+
+}
+
+public:
+
+bool teacher_position = true;
+
+static vector<string> homework;
+
+static vector<string> notification;
+
+friend void Create_Lesson(string Name, int Capacity, int Partical_Unit, int Theory_Unit, int Classroom_Number, string Classroom_Time, string teacher_name);
+
 ~teacher()
 {}
 
 };
+
+vector<string> teacher::homework;
+
+vector<string> teacher::notification;
+
+void Create_Lesson(string Name, int Capacity, int Partical_Unit, int Theory_Unit, int Classroom_Number, string Classroom_Time, string Teacher_Name)
+{
+
+teacher Teacher;
+
+Teacher.create_lesson(Name, Capacity, Partical_Unit, Theory_Unit, Classroom_Number, Classroom_Time, Teacher_Name);
+
+}
 
 class student:public teacher {
 
