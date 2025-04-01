@@ -24,6 +24,8 @@ vector<int> student_put_score;
 
 vector<int> Lessons_Capacity;
 
+vector<int> classroom_number;
+
 ~lesson()
 {}
 
