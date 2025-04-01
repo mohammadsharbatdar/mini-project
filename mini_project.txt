@@ -945,6 +945,188 @@ Admin.read();
 int main()
 {
 
+string username;
+
+string password;
+
+string line_1;
+
+string line_2;
+
+int selection_1;
+
+int selection_2;
+
+for(int i = 0; i >= 0; i++)
+{
+
+line967:
+
+cout << "1. Admin.\n2. Teacher.\n3. Student.\n4. Exit." << endl;
+
+cin >> selection_1;
+
+if(selection_1 == 1)
+{
+
+bool Position;
+
+for(int j = 0; j >= 0; j++)
+{
+
+ifstream file_1("admin.txt");
+
+cout << "please enter your username:" << endl;
+
+cin >> username;
+
+cout << "please enter your password:" << endl;
+
+cin >> password;
+
+while(getline(file_1, line_1))
+{
+
+Position = true;
+
+getline(file_1, line_2);
+
+if(password.compare(line_2) == 0 && Position == true)
+{
+
+goto line1022;
+
+}
+else
+{
+
+break;
+
+}
+
+}
+
+}
+
+file_1.close();
+
+}
+
+line1022:
+
+}
+else if(selection_1 == 2)
+{
+
+bool Position;
+
+for(int j = 0; j >= 0; j++)
+{
+
+ifstream file_2("teacher.txt");
+
+cout << "please enter your username:" << endl;
+
+cin >> username;
+
+cout << "please enter your password:" << endl;
+
+cin >> password;
+
+while(getline(file_2, line_1))
+{
+
+if(username.compare(line_1) == 0)
+{
+
+Position = true;
+
+getline(file_2, line_2);
+
+if(password.compare(line_2) == 0 && Position == true)
+{
+
+goto line1161;
+
+}
+else
+{
+
+break;
+
+}
+
+}
+
+}
+
+file_2.close();
+
+}
+
+line1161:
+
+}
+else if(selection_1 == 3)
+{
+
+bool Position;
+
+for(int j = 0; j >= 0; j++)
+{
+
+ifstream file_2("teacher.txt");
+
+cout << "please enter your username:" << endl;
+
+cin >> username;
+
+cout << "please enter your password:" << endl;
+
+cin >> password;
+
+while(getline(file_2, line_1))
+{
+
+if(username.compare(line)1) == 0)
+{
+
+Position = true;
+
+getline(file_2, line_2);
+
+if(username.compare(line_1) == 0)
+{
+
+goto line1333;
+
+}
+else
+{
+
+break;
+
+}
+
+}
+
+}
+
+file_2.close();
+
+}
+
+line1333:
+
+}
+else if(selection_1 == 4)
+{
+
+exit(0);
+
+}
+
+}
 
 return 0;
 }
