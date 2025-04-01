@@ -16,6 +16,8 @@ vector<string> Student_file;
 
 vector<string> classroom_time;
 
+vector<vector<string>> Students_List;
+
 ~lesson()
 {}
 
