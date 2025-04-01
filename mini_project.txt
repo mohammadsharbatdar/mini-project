@@ -32,6 +32,8 @@ vector<int> theory_unit;
 
 vector<int> present_list;
 
+vector<int> absent_list;
+
 ~lesson()
 {}
 
