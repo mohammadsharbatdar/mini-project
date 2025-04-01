@@ -488,6 +488,29 @@ cout << teacher.homework[andis] << endl;
 
 }
 
+void See_Classroom_Time(string lesson)
+{
+
+int andis = 0;
+
+for(string i: Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+cout << Lesson.classroom_time[andis] << endl;
+
+}
+
 ~student()
 {}
 
