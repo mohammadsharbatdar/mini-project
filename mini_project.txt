@@ -41,6 +41,13 @@ vector<int> absent_list;
 
 lesson Lesson;
 
+class admin {
+
+~admin()
+{}
+
+};
+
 int main()
 {
 
