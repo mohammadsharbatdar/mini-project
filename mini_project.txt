@@ -10,6 +10,8 @@ public:
 
 vector<string> Lesson_List;
 
+vector<string> Teachers_List;
+
 ~lesson()
 {}
 
