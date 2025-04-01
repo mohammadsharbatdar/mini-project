@@ -20,6 +20,8 @@ vector<vector<string>> Students_List;
 
 vector<vector<int>> teacher_put_score;
 
+vector<int> student_put_score;
+
 ~lesson()
 {}
 
