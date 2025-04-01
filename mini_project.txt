@@ -173,6 +173,73 @@ file.close();
 
 }
 
+static void delete_user(string user, string Name)
+{
+
+if(user.compare("teacher") == 0)
+{
+
+int andis = 0;
+
+for(string i: Lesson.Teachers_List)
+{
+
+if(i.compare(Name) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+Teacher.erase(Teacher.begin() + andis);
+
+Lesson.Teachers_List.erase(Lesson.Teachers_List.begin() + andis);
+
+}
+else if(user.compare("student") == 0)
+{
+
+int row = 0;
+
+int colum;
+
+for(vector<string> i: Lesson.Students_List)
+{
+
+colum = 0;
+
+for(string j: i)
+{
+
+if(j.compare(Name) == 0)
+{
+
+goto line 754;
+
+}
+
+colum++;
+
+}
+
+row++;
+
+}
+
+line754:
+
+Student.erase(Student.begin() + ((row + 1) * (colum + 1)) - 1);
+
+Lesson.Students_List[row].erase(Lesson.Students_List[row].begin() + colum);
+
+}
+
+}
+
 public:
 
 static vector<teacher> Teacher;
@@ -182,6 +249,8 @@ static vector<student> Student;
 friend void Create_User(int choice, string Name, string Password);
 
 friend void Update();
+
+friend void Delete(string user, string Name);
 
 ~admin()
 {}
@@ -242,6 +311,15 @@ void Update()
 admin Admin;
 
 Admin.update();
+
+}
+
+void Delete(string user, string Name)
+{
+
+admin Admin;
+
+Admin.delete_user(user, Name);
 
 }
 
