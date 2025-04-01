@@ -424,6 +424,45 @@ Lesson.student_put_score[andis] = number;
 
 }
 
+void See_Score(string lesson, string Name)
+{
+
+int andis_1 = 0;
+
+int andis_2 = 0;
+
+for(string i: Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis_1++;
+
+}
+
+for(stirng i: Lesson.Students_List[andis_1])
+{
+
+if(i.compare(Name) == 0)
+{
+
+break;
+
+}
+
+andis_2++;
+
+}
+
+cout << Lesson.teacher_put_score[andis_1][andis_2] << endl;
+
+}
+
 ~student()
 {}
 
