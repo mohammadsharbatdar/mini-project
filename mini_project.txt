@@ -12,6 +12,8 @@ vector<string> Lesson_List;
 
 vector<string> Teachers_List;
 
+vector<string> Student_file;
+
 ~lesson()
 {}
 
