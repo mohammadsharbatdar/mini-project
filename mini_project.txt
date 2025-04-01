@@ -128,6 +128,29 @@ file.close();
 
 }
 
+static void putting_homework(string lesson, string duty)
+{
+
+int andis = 0;
+
+for(string i: Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+homework[andis] = duty;
+
+}
+
 public:
 
 bool teacher_position = true;
@@ -137,6 +160,8 @@ static vector<string> homework;
 static vector<string> notification;
 
 friend void Create_Lesson(string Name, int Capacity, int Partical_Unit, int Theory_Unit, int Classroom_Number, string Classroom_Time, string teacher_name);
+
+friend void Putting_Homework(string lesson, string duty);
 
 ~teacher()
 {}
@@ -153,6 +178,14 @@ void Create_Lesson(string Name, int Capacity, int Partical_Unit, int Theory_Unit
 teacher Teacher;
 
 Teacher.create_lesson(Name, Capacity, Partical_Unit, Theory_Unit, Classroom_Number, Classroom_Time, Teacher_Name);
+
+}
+
+void Putting_Homework(string lesson, string duty)
+{
+
+teacher Teacher;
+Teacher.putting_homework(lesson, duty);
 
 }
 
