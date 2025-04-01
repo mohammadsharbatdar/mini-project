@@ -39,6 +39,8 @@ vector<int> absent_list;
 
 };
 
+lesson Lesson;
+
 int main()
 {
 
