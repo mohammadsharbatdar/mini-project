@@ -28,6 +28,8 @@ vector<int> classroom_number;
 
 vector<int> partical_unit;
 
+vector<int> theory_unit;
+
 ~lesson()
 {}
 
