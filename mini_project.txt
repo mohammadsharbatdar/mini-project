@@ -511,6 +511,8 @@ cout << Lesson.classroom_time[andis] << endl;
 
 }
 
+
+
 ~student()
 {}
 
