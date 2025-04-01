@@ -401,6 +401,29 @@ cout << Teacher.notification[andis] << endl;
 
 }
 
+void Putting_Score(string lesson, int number)
+{
+
+int andis = 0;
+
+for(string i: Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+Lesson.student_put_score[andis] = number;
+
+}
+
 ~student()
 {}
 
