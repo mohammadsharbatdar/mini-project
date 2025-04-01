@@ -304,6 +304,24 @@ Student[((row + 1) * (colum + 1)) - 1].student_position = false;
 
 }
 
+static void read()
+{
+
+ifstream file("main.txt");
+
+string line;
+
+while(getline(file, line))
+{
+
+cout << line << endl;
+
+}
+
+file.close();
+
+}
+
 public:
 
 static vector<teacher> Teacher;
@@ -317,6 +335,8 @@ friend void Update();
 friend void Delete(string user, string Name);
 
 friend void Restore(string user, string Name);
+
+friend void Read();
 
 ~admin()
 {}
@@ -394,6 +414,15 @@ void Restore(string user, string name)
 
 admin Admin;
 Admin.restore(user,Name);
+
+}
+
+void Read()
+{
+
+admin Admin;
+
+Admin.read();
 
 }
 
