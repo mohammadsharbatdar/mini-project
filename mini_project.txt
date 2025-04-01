@@ -151,6 +151,29 @@ homework[andis] = duty;
 
 }
 
+static void putting_notification(string lesson, string note)
+{
+
+int andis = 0;
+
+for(string i: Lesson.lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+notification.push_back(note);
+
+}
+
 public:
 
 bool teacher_position = true;
@@ -162,6 +185,8 @@ static vector<string> notification;
 friend void Create_Lesson(string Name, int Capacity, int Partical_Unit, int Theory_Unit, int Classroom_Number, string Classroom_Time, string teacher_name);
 
 friend void Putting_Homework(string lesson, string duty);
+
+friend void Putting_Notification(string lesson, string note);
 
 ~teacher()
 {}
@@ -186,6 +211,15 @@ void Putting_Homework(string lesson, string duty)
 
 teacher Teacher;
 Teacher.putting_homework(lesson, duty);
+
+}
+
+void Putting_Notification(string lesson, string note)
+{
+
+teacher Teacher;
+
+Teacher.putting_notification(lesson, note);
 
 }
 
