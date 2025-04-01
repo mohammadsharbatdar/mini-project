@@ -313,10 +313,48 @@ Lesson.teacher_put_score[andis].push_back(Score);
 
 class student:public teacher {
 
+private:
+
+static void add_lesson(string lesson, string Name)
+{
+
+int andis = 0;
+
+for(string i: Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+Lesson.Students_List[andis].push_back(Name);
+
+}
+
+public:
+
+friend void Add_Lesson(string lesson, string Name);
+
 ~student()
 {}
 
 };
+
+void Add_Lesson(string Lesson, string Name)
+{
+
+student Student;
+
+Student.add_lesson(lesson, name);
+
+}
 
 class admin {
 
