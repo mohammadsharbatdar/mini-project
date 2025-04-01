@@ -376,6 +376,31 @@ cout << size << endl;
 
 }
 
+void See_Notification(string lesson)
+{
+
+teacher Teacher;
+
+int andis = 0;
+
+for(string i: Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+cout << Teacher.notification[andis] << endl;
+
+}
+
 ~student()
 {}
 
