@@ -214,6 +214,9 @@ cin >> Absent_Number;
 
 protected:
 
+
+friend void Putting_Score(string lesson);
+
 public:
 
 bool teacher_position = true;
@@ -271,6 +274,40 @@ void Putting_Attendance(string lesson)
 teacher Teacher;
 
 Teacher.putting_attendance(lesson);
+
+}
+
+void Putting_Score(string lesson)
+{
+
+int andis = 0;
+
+int Score;
+
+for(string i: Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+for(int k = 0; k < Lesson.Students_List[andis].size(); k++)
+{
+
+cout << "please enter a score:" << endl;
+
+cin >> Score;
+
+Lesson.teacher_put_score[andis].push_back(Score);
+
+}
 
 }
 
