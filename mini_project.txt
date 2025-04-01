@@ -30,6 +30,8 @@ vector<int> partical_unit;
 
 vector<int> theory_unit;
 
+vector<int> present_list;
+
 ~lesson()
 {}
 
