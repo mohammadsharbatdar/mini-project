@@ -41,12 +41,102 @@ vector<int> absent_list;
 
 lesson Lesson;
 
+class teacher {
+
+~teacher()
+{}
+
+};
+
+class student:public teacher {
+
+~student()
+{}
+
+};
+
 class admin {
+
+private:
+
+static void create_user(int choice)
+{
+
+if(choice == 1)
+{
+
+Teacher.push_back(teacher());
+
+}
+else if(choice == 2)
+{
+
+Student.push_back(student());
+
+}
+
+}
+
+public:
+
+static vector<teacher> Teacher;
+
+static vector<student> Student;
+
+friend void Create_User(int choice, string Name, string Password);
 
 ~admin()
 {}
 
 };
+
+vector<teacher> admin::Teacher;
+
+vector<student> admin::Student;
+
+void Create_User(int choice, string Name = "Hello", string Password = "Hello")
+{
+
+admin Admin;
+
+Admin.create_user(choice);
+
+if(Name.compare("Hello") != 0 && choice == 1)
+{
+
+Lesson.Teachers_List.push_back(Name);
+
+Lesson.Teachers_List.push_back("\n");
+
+if(Password.compare("Hello") != 0)
+{
+
+Lesson.Teachers_List.push_back(Password);
+
+Lesson.Teachers_List.push_back("\n");
+
+}
+
+}
+else if(Name.compare("Hello") != 0 && choice == 2)
+{
+
+Lesson.Student_file.push_back(Name);
+
+Lesson.Student_file.push_back("\n");
+
+if(Password.compare("Hello") != 0)
+{
+
+Lesson.Student_file.push_back(Password);
+
+Lesson.Student_file.push_back("\n");
+
+}
+
+}
+
+}
 
 int main()
 {
