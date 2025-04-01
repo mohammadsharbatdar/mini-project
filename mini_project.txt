@@ -534,7 +534,28 @@ cout << Lesson.classroom_number[andis] << endl;
 
 }
 
+void See_Units(string lesson)
+{
 
+int andis = 0;
+
+for(string i: Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+cout << Lesson.partical_unit[andis] << endl << Lesson.theory_unit[andis] << endl;
+
+}
 
 ~student()
 {}
