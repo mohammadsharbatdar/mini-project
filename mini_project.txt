@@ -534,6 +534,8 @@ cout << Lesson.classroom_number[andis] << endl;
 
 }
 
+
+
 ~student()
 {}
 
