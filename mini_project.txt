@@ -4,6 +4,13 @@
 #include <fstream>
 using namespace std;
 
+class lesson {
+
+~lesson()
+{}
+
+};
+
 int main()
 {
 
