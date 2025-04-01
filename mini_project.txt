@@ -77,6 +77,102 @@ Student.push_back(student());
 
 }
 
+static void update()
+{
+
+ofstream file("main.txt");
+
+file << "Lessons_List:\n";
+
+}
+
+file << "\n";
+
+file << "Teachers_List:\n";
+
+for(string i: Lesson.Teachers_List)
+{
+
+file << i;
+
+}
+
+file << "\n";
+
+ofstream file_1("teacher.txt");
+
+for()
+{
+
+file_1 << i;
+
+}
+
+file_1.close();
+
+file << "Students_Score:\n";
+
+for(int i: Lesson.student_put_score)
+{
+
+file << i << "\t";
+
+}
+
+file << "\n";
+
+int andis = 0;
+
+file << "Teachers_Score:\n";
+
+for(vector<int> i: Lesson.teacher_put_score)
+{
+
+file << Lesson.Lessons_List[andis] << "\t:\t";
+
+for(int j: i)
+{
+
+file << j << "\t";
+
+}
+
+file << "\n";
+
+andis++;
+
+}
+
+andis = 0;
+
+file << "\n";
+
+ofstream file_2("student.txt");
+
+for(vector<string> i: Lesson.Students_list)
+{
+
+file_2 << Lesson.Lesson_List[andis] << "\t:\t";
+
+for(string j: i)
+{
+
+file_2 << j;
+
+}
+
+file_2.close();
+
+file << "\n";
+
+andis++;
+
+}
+
+file.close();
+
+}
+
 public:
 
 static vector<teacher> Teacher;
@@ -84,6 +180,8 @@ static vector<teacher> Teacher;
 static vector<student> Student;
 
 friend void Create_User(int choice, string Name, string Password);
+
+friend void Update();
 
 ~admin()
 {}
@@ -135,6 +233,15 @@ Lesson.Student_file.push_back("\n");
 }
 
 }
+
+}
+
+void Update()
+{
+
+admin Admin;
+
+Admin.update();
 
 }
 
