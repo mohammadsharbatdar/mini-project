@@ -240,6 +240,70 @@ Lesson.Students_List[row].erase(Lesson.Students_List[row].begin() + colum);
 
 }
 
+static void restore(string user, string Name)
+{
+
+if(user.compare("teacher") == 0)
+{
+
+int andis = 0;
+
+for(string i: Lesson.Teachers_List)
+{
+
+if(i.compare(Name) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+Teacher[andis].teacher_position = false;
+
+}
+
+else if(user.compare("student") == 0)
+{
+
+int row = 0;
+
+int colum;
+
+for(vector<string> i: Lesson.Students_List)
+{
+
+colum = 0;
+
+for(string j: i)
+{
+
+if(j.compare(Name) == 0)
+{
+
+goto line820;
+
+}
+
+colum++;
+
+}
+
+row++;
+
+}
+
+line820:
+
+Student[((row + 1) * (colum + 1)) - 1].student_position = false;
+
+}
+
+}
+
 public:
 
 static vector<teacher> Teacher;
@@ -251,6 +315,8 @@ friend void Create_User(int choice, string Name, string Password);
 friend void Update();
 
 friend void Delete(string user, string Name);
+
+friend void Restore(string user, string Name);
 
 ~admin()
 {}
@@ -320,6 +386,14 @@ void Delete(string user, string Name)
 admin Admin;
 
 Admin.delete_user(user, Name);
+
+}
+
+void Restore(string user, string name)
+{
+
+admin Admin;
+Admin.restore(user,Name);
 
 }
 
