@@ -45,7 +45,7 @@ class teacher {
 
 private:
 
-static void create_lesson(string Name, int Capacity, int Partical_Unit, int Theory_Unit, int Classroom_Name, string Classroom_Time, string Theacher_Name)
+static void create_lesson(string Name, int Capacity, int Partical_Unit, int Theory_Unit, int Classroom_Number, string Classroom_Time, string Theacher_Name)
 {
 
 Name = Name + " : " + Theacher_Name;
