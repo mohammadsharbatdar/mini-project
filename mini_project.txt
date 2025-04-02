@@ -71,7 +71,7 @@ for(int i = 0; i < Lesson.Lessons_List.size(); i++)
 
 file << "partical unit:\t";
 
-file << LEsson.partical_unit[i];
+file << Lesson.partical_unit[i];
 
 file << "\t theory unit:\t";
 
@@ -102,6 +102,10 @@ for(int i = 0; i < Lesson.Lessons_List.size(); i++)
 {
 
 file << Lesson.classroom_time[i];
+
+file << "\n";
+
+}
 
 file << "\n";
 
@@ -156,7 +160,7 @@ static void putting_notification(string lesson, string note)
 
 int andis = 0;
 
-for(string i: Lesson.lessons_List)
+for(string i: Lesson.Lessons_List)
 {
 
 if(i.compare(lesson) == 0)
@@ -214,7 +218,6 @@ cin >> Absent_Number;
 
 protected:
 
-
 friend void Putting_Score(string lesson);
 
 public:
@@ -225,7 +228,7 @@ static vector<string> homework;
 
 static vector<string> notification;
 
-friend void Create_Lesson(string Name, int Capacity, int Partical_Unit, int Theory_Unit, int Classroom_Number, string Classroom_Time, string teacher_name);
+friend void Create_Lesson(string Name, int Capacity, int Partical_Unit, int Theory_Unit, int Classroom_Number, string Classroom_Time, string Teacher_Name);
 
 friend void Putting_Homework(string lesson, string duty);
 
@@ -233,6 +236,7 @@ friend void Putting_Notification(string lesson, string note);
 
 
 friend void Putting_Attendance(string lesson);
+
 ~teacher()
 {}
 
@@ -255,6 +259,7 @@ void Putting_Homework(string lesson, string duty)
 {
 
 teacher Teacher;
+
 Teacher.putting_homework(lesson, duty);
 
 }
@@ -484,7 +489,7 @@ andis++;
 
 }
 
-cout << teacher.homework[andis] << endl;
+cout << Teacher.homework[andis] << endl;
 
 }
 
@@ -600,6 +605,11 @@ ofstream file("main.txt");
 
 file << "Lessons_List:\n";
 
+for(string i: Lesson.Lessons_List)
+{
+
+file << i << "\t";
+
 }
 
 file << "\n";
@@ -617,7 +627,7 @@ file << "\n";
 
 ofstream file_1("teacher.txt");
 
-for()
+for(string i: Lesson.Teachers_List)
 {
 
 file_1 << i;
@@ -665,7 +675,7 @@ file << "\n";
 
 ofstream file_2("student.txt");
 
-for(vector<string> i: Lesson.Students_list)
+for(vector<string> i: Lesson.Students_List)
 {
 
 file_2 << Lesson.Lesson_List[andis] << "\t:\t";
@@ -734,7 +744,7 @@ for(string j: i)
 if(j.compare(Name) == 0)
 {
 
-goto line 754;
+goto line757;
 
 }
 
@@ -746,7 +756,7 @@ row++;
 
 }
 
-line754:
+line757:
 
 Student.erase(Student.begin() + ((row + 1) * (colum + 1)) - 1);
 
@@ -781,7 +791,6 @@ andis++;
 Teacher[andis].teacher_position = false;
 
 }
-
 else if(user.compare("student") == 0)
 {
 
@@ -800,7 +809,7 @@ for(string j: i)
 if(j.compare(Name) == 0)
 {
 
-goto line820;
+goto line822;
 
 }
 
@@ -812,7 +821,7 @@ row++;
 
 }
 
-line820:
+line822:
 
 Student[((row + 1) * (colum + 1)) - 1].student_position = false;
 
@@ -925,7 +934,7 @@ Admin.delete_user(user, Name);
 
 }
 
-void Restore(string user, string name)
+void Restore(string user, string Name)
 {
 
 admin Admin;
@@ -956,10 +965,11 @@ string line_2;
 int selection_1;
 
 int selection_2;
+
 for(int i = 0; i >= 0; i++)
 {
 
-line967:
+line969:
 
 cout << "1. Admin.\n2. Teacher.\n3. Student.\n4. Exit." << endl;
 
@@ -996,7 +1006,7 @@ getline(file_1, line_2);
 if(password.compare(line_2) == 0 && Position == true)
 {
 
-goto line1022;
+goto line1024;
 
 }
 else
@@ -1014,7 +1024,7 @@ file_1.close();
 
 }
 
-line1022:
+line1024:
 
 for(int j = 0; j >= 0; j++)
 {
@@ -1082,7 +1092,7 @@ case 5:
 
 cout << "please enter a lesson" << endl;
 
-cin >> lesson;
+cin >> Lesson;
 
 cout << "please enter a name:" << endl;
 
@@ -1096,7 +1106,7 @@ case 6:
 
 Position = false;
 
-goto line967;
+goto line969;
 
 break;
 
@@ -1133,17 +1143,10 @@ Position = true;
 
 getline(file_2, line_2);
 
-if(username.compare(line_1) == 0)
-{
-
-Position = true;
-
-getline(file_2, line_2);
-
 if(password.compare(line_2) == 0 && Position = true)
 {
 
-goto line1161;
+goto line1163;
 
 }
 else
@@ -1161,7 +1164,7 @@ file_2.close();
 
 }
 
-line1161:
+line1163:
 
 for(int j = 0; j >= 0; j++)
 {
@@ -1176,7 +1179,7 @@ string duty;
 
 string note;
 
-string lesson;
+string Lesson;
 
 string Classroom_Time;
 
@@ -1229,7 +1232,7 @@ break;
 
 case 2:
 
-cout << "please entera lesson:" << endl;
+cout << "please enter a lesson:" << endl;
 
 cin >> Lesson;
 
@@ -1271,7 +1274,7 @@ cout << "please enter a lesson:" << endl;
 
 cin >> Lesson;
 
-Putting_Attendanc(Lesson);
+Putting_Attendance(Lesson);
 
 break;
 
@@ -1279,7 +1282,7 @@ case 6:
 
 Position = false;
 
-goto line967;
+goto line969;
 
 break;
 
@@ -1319,7 +1322,7 @@ getline(file_2, line_2);
 if(password.compare(line_2) == 0 && Position == true)
 {
 
-goto line1333;
+goto line1336;
 
 }
 else
@@ -1337,7 +1340,7 @@ file_2.close();
 
 }
 
-line1333:
+line1336:
 
 for(int j = 0; j >= 0; j++)
 {
@@ -1462,7 +1465,7 @@ case 10:
 
 Position = false;
 
-goto line967;
+goto line969;
 
 break;
 
