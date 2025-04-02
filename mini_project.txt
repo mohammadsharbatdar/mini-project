@@ -956,7 +956,6 @@ string line_2;
 int selection_1;
 
 int selection_2;
-
 for(int i = 0; i >= 0; i++)
 {
 
@@ -985,6 +984,9 @@ cout << "please enter your password:" << endl;
 cin >> password;
 
 while(getline(file_1, line_1))
+{
+
+if(username.compare(line_1) == 0)
 {
 
 Position = true;
@@ -1017,7 +1019,7 @@ line1022:
 for(int j = 0; j >= 0; j++)
 {
 
-cout << "1. Create_User.\n2. Update.\n3. Read.\n4. Restore.\n5. Delete.\n6. Back" << endl;
+cout << "1. Create_User.\n2. Update.\n3. Read.\n4. Restore.\n5. Delete.\n6. Back." << endl;
 
 cin >> selection_2;
 
@@ -1070,15 +1072,19 @@ cin >> Lesson;
 
 cout << "please enter a name:" << endl;
 
-cin > Name;
+cin >> Name;
 
-restore(Lesson, Name);
+Restore(Lesson, Name);
 
 break;
 
 case 5:
 
 cout << "please enter a lesson" << endl;
+
+cin >> lesson;
+
+cout << "please enter a name:" << endl;
 
 cin >> Name;
 
@@ -1102,7 +1108,7 @@ break;
 else if(selection_1 == 2)
 {
 
-bool Position;
+bool Psotion;
 
 for(int j = 0; j >= 0; j++)
 {
@@ -1127,10 +1133,35 @@ Position = true;
 
 getline(file_2, line_2);
 
-if(password.compare(line_2) == 0 && Position == true)
+if(username.compare(line_1) == 0)
+{
+
+Position = true;
+
+getline(file_2, line_2);
+
+if(password.compare(line_2) == 0 && Position = true)
 {
 
 goto line1161;
+
+}
+else
+{
+
+break;
+
+}
+
+}
+
+}
+
+file_2.close();
+
+}
+
+line1161:
 
 for(int j = 0; j >= 0; j++)
 {
@@ -1145,9 +1176,10 @@ string duty;
 
 string note;
 
-string Lesson;
+string lesson;
 
 string Classroom_Time;
+
 string Teacher_Name;
 
 int Classroom_Number;
@@ -1179,14 +1211,15 @@ cout << "please enter a theory_unit:" << endl;
 
 cin >> Theory_Unit;
 
-cout << "please enter a classroom-number:" << endl;
+cout << "please enter a classroom_number:" << endl;
 
 cin >> Classroom_Number;
 
 cout << "please enter a classroom_time:" << endl;
 
 cin >> Classroom_Time;
-cout << "please enter a Teacher_Name:" << endl;
+
+cout << "pleass enter a teacher_name:" << endl;
 
 cin >> Teacher_Name;
 
@@ -1196,7 +1229,7 @@ break;
 
 case 2:
 
-cout << "please enter a lesson" << endl;
+cout << "please entera lesson:" << endl;
 
 cin >> Lesson;
 
@@ -1224,7 +1257,7 @@ break;
 
 case 4:
 
-cout << "please enter a lesson" << endl;
+cout << "please enter a lesson:" << endl;
 
 cin >> Lesson;
 
@@ -1238,7 +1271,7 @@ cout << "please enter a lesson:" << endl;
 
 cin >> Lesson;
 
-Putting_Attendance(Lesson);
+Putting_Attendanc(Lesson);
 
 break;
 
@@ -1253,24 +1286,6 @@ break;
 }
 
 }
-
-}
-else
-{
-
-break;
-
-}
-
-}
-
-}
-
-file_2.close();
-
-}
-
-line1161:
 
 }
 else if(selection_1 == 3)
@@ -1294,14 +1309,14 @@ cin >> password;
 while(getline(file_2, line_1))
 {
 
-if(username.compare(line)1) == 0)
+if(username.compare(line_1) == 0)
 {
 
 Position = true;
 
 getline(file_2, line_2);
 
-if(username.compare(line_1) == 0)
+if(password.compare(line_2) == 0 && Position == true)
 {
 
 goto line1333;
@@ -1324,6 +1339,137 @@ file_2.close();
 
 line1333:
 
+for(int j = 0; j >= 0; j++)
+{
+
+cout << "1. Add_Lesson.\n2. See_Empty_Capacity..\n3. See_Notification.\n4. Putting_Score.\n5. See_Score.\n6. See_homework.\n7. See_Classroom_Time.\n8. See_Classroom_Number.\n9. See_Units.\n10. Back." << endl;
+
+cin >> selection_2;
+
+student S;
+
+string Lesson;
+
+string Name;
+
+int number;
+
+switch(selection_2)
+{
+case 1:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+cout << "please enter a name:" << endl;
+
+cin >> Name;
+
+Add_Lesson(Lesson, Name);
+
+break;
+
+case 2:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+S.See_Empty_Capacity(Lesson);
+
+break;
+
+case 3:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+S.See_Notification(Lesson);
+
+break;
+
+case 4:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+cout << "please enter a number:" << endl;
+
+cin >> number;
+
+S.Putting_Score(Lesson, number);
+
+break;
+
+case 5:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+cout << "please enter a name:" << endl;
+
+cin >> Name;
+
+S.See_Score(Lesson, Name);
+
+break;
+
+case 6:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+S.See_homework(Lesson);
+
+break;
+
+case 7:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+S.See_Classroom_Time(Lesson);
+
+break;
+
+case 8:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+S.See_Classroom_Number(Lesson);
+
+break;
+
+case 9:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+S.See_Units(Lesson);
+
+break;
+
+case 10:
+
+Position = false;
+
+goto line967;
+
+break;
+
+}
+
+}
+
 }
 else if(selection_1 == 4)
 {
@@ -1335,4 +1481,5 @@ exit(0);
 }
 
 return 0;
+
 }
