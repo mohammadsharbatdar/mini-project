@@ -954,6 +954,168 @@ Admin.read();
 int main()
 {
 
+ifstream file("teacher.txt");
+
+string line;
+
+while(getline(file, line))
+{
+
+Lesson.Teachers_List.push_back(line);
+
+}
+
+file.close();
+
+ifstream file("student.txt");
+
+while(getline(file, line))
+{
+
+Lesson.Student_file.push_back(line);
+
+}
+
+file.close();
+
+ifstream file("homework.txt");
+
+while(getline(file, line))
+{
+
+teacher Teacher;
+
+Teacher.homework.push_back(line);
+
+}
+
+file.close();
+
+ifstream file("notification.txt");
+
+while(getline(file, line))
+{
+
+teacher Teacher;
+
+Teacher.notification.push_back(line);
+
+}
+
+file.close();
+
+ifstream file("student_score.txt");
+
+while(getline(file, line))
+{
+
+Lesson.student_put_score.push_back(stoi(line));
+
+}
+
+file.close();
+
+ifstream file("classroom_number.txt");
+
+while(getline(file, line))
+{
+
+Lesson.classroom_number.push_back(stoi(line));
+
+}
+
+file.close();
+
+ifstream file("classroom_time.txt");
+
+while(getline(file, line))
+{
+
+Lesson.classroom_time.push_back(line);
+
+}
+
+file.close();
+
+ifstream file("partical_unit.txt");
+
+while(getline(file, line))
+{
+
+Lesson.partical_unit.push_back(stoi(line));
+
+}
+
+file.close();
+
+ifstream file("theory_unit.txt");
+
+while(file, line)
+{
+
+Lesson.theory_unit.push_back(stoi(line));
+
+}
+
+file.close();
+
+ifstream file("present_list.txt");
+
+while(getline(file, line))
+{
+
+Lesson.present_list.push_back(stoi(line));
+
+}
+
+file.close();
+
+ifstream file("absent_list.txt");
+
+while(getline(file, line))
+{
+
+Lesson.absent_list.push_back(line);
+
+}
+
+file.close();
+
+ifstream file("lessons_capacity.txt");
+
+while(getline(file, line))
+{
+
+Lesson.Lessons_Capacity.push_back(line);
+
+}
+
+file.close();
+
+ifstream file("teacher_score.txt");
+
+int andis = 0;
+
+while(getline(file, line))
+{
+
+if(line != "")
+{
+
+Lesson.teacher_put_score[andis].push_back(stoi(line));
+
+}
+else
+{
+
+andis++;
+
+}
+
+}
+
+file.close();
+
 string username;
 
 string password;
@@ -969,7 +1131,7 @@ int selection_2;
 for(int i = 0; i >= 0; i++)
 {
 
-line969:
+line1150:
 
 cout << "1. Admin.\n2. Teacher.\n3. Student.\n4. Exit." << endl;
 
@@ -1006,7 +1168,7 @@ getline(file_1, line_2);
 if(password.compare(line_2) == 0 && Position == true)
 {
 
-goto line1024;
+goto line1205;
 
 }
 else
@@ -1024,7 +1186,7 @@ file_1.close();
 
 }
 
-line1024:
+line1205:
 
 for(int j = 0; j >= 0; j++)
 {
@@ -1106,7 +1268,7 @@ case 6:
 
 Position = false;
 
-goto line969;
+goto line1150;
 
 break;
 
@@ -1146,7 +1308,7 @@ getline(file_2, line_2);
 if(password.compare(line_2) == 0 && Position = true)
 {
 
-goto line1163;
+goto line1344;
 
 }
 else
@@ -1164,7 +1326,7 @@ file_2.close();
 
 }
 
-line1163:
+line1344:
 
 for(int j = 0; j >= 0; j++)
 {
@@ -1282,7 +1444,7 @@ case 6:
 
 Position = false;
 
-goto line969;
+goto line1150;
 
 break;
 
@@ -1322,7 +1484,7 @@ getline(file_2, line_2);
 if(password.compare(line_2) == 0 && Position == true)
 {
 
-goto line1336;
+goto line1517;
 
 }
 else
@@ -1340,7 +1502,7 @@ file_2.close();
 
 }
 
-line1336:
+line1517:
 
 for(int j = 0; j >= 0; j++)
 {
@@ -1465,7 +1627,7 @@ case 10:
 
 Position = false;
 
-goto line969;
+goto line1150;
 
 break;
 
