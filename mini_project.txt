@@ -1,170 +1,256 @@
-#ifndef HEADER_H
-#define HEADER_H
+#include "header.h"
 
-#include <iostream>
+lesson Lesson;
 
-#include <string>
+vector<teacher> admin::Teacher;
 
-#include <vector>
+vector<student> admin::Student;
 
-#include <fstream>
+vector<string> admin::homework;
 
-using namespace std;
+vector<string> admin::notification;
 
-class lesson {
+void teacher::create_lesson(string Name, int Capacity, int Partical_Uniit, int Theory_Unit, int Classroom_Number, string Classroom_Time, string Teacher_Name) {
 
-public:
+Name Name + " : " + Teacher_Name;
 
-vector<string> Lessons_List;
+Lesson.Lessons_List.push_back(Name);
 
-vector<string> Teachers_List;
+Lesson.Lessons_Capacity.push_back(Capacity);
 
-vector<string> Student_file;
+Lesson.partical_unit.push_back(Partical_Unit);
 
-vector<string> classroom_time;
+Lesson.theory_unit.push_back(Theory_Unit);
 
-vector<vector<string>> Students_List;
+Lesson.classroom_number.push_back(Classroom_Number);
 
-vector<vector<int>> teacher_put_score;
+Lesson.classroom_time.push_back(Classroom_Time);
 
-vector<int> student_put_score;
+ofstream file("lesson.txt");
 
-vector<int> Lessons_Capacity;
+file << "Units:\n";
 
-vector<int> classroom_number;
+for(int i = 0; i < Lesson.Lessons_List.size(); i++)
+{
 
-vector<int> partical_unit;
+file << "partical unit:\t" << Lesson.partical_unit[i] << "\ttheory unit:\t" << Lesson.theory_unit[i] << "\n";
 
-vector<int> theory_unit;
+}
 
-vector<int> present_list;
+file << "\nclassroom numbers:\n";
 
-vector<int> absent_list;
+for(int i = 0; i < Lesson.Lessons_List.size(); i++)
+{
 
-~lesson() {}
+file << Lesson.classroom_number[i] << "\n";
 
-};
+}
 
-extern lesson Lesson;
+file << "\nclassroom times:\n";
 
-class teacher {
+for(int i = 0; i < Lesson.Lessons_List.size(); i++)
+{
 
-private:
+file << Lesson.classroom_time[i] << "\n";
 
-static void Create_lesson(string Name, int Capacity, int Partical_Unit, int Theory_Unit, int Classroom_Number, string Classroom_Time, string Teacher_Name);
+}
 
-static void Putting_homework(string lesson, string duty);
+file << "\nattendance list:\n";
 
-static void Putting_notification(string lesson, string note);
+for(int i = 0; i < Lesson.Lessons_List.size(); i++)
+{
 
-static void Putting_Attendance(string lesson);
+file << "present:\t" << Lesson.present_list[i] << "\tabsent:\t" << Lesson.absent_list[i] << "\n"; 
 
-protected:
+}
 
-friend void Putting_Score(string lesson);
+file.close();
 
-public:
+}
 
-bool teacher_position = true;
+void teacher::putting_homework(string lesson, string duty) {
 
-static vector<string> homework;
+int andis = 0;
 
-static vector<string> notification;
+for(string i : Lesson.Lessons_List)
+{
 
-friend void Create_Lesson(string Name, int Capacity, int Partical_Unit, int Theory_Unit, int Classroom_Number, string Classroom_Time, string Teacher_Name);
+if(i.compare(lesson) == 0)
+{
 
-friend void Putting_Homework(string lesson, string duty);
+break;
 
-friend void Putting_Notification(string lesson, string note);
+}
 
-friend void Putting_Attendance(string lesson);
+andis++;
 
-~teacher() {}
+}
 
-};
+homework[andis] = duty;
 
-void Create_Lesson(string Name, int Capacity, int Partical_Unit, int Theory_Unit, int Classroom_Number, string Classroom_Time, string Teacher_Name);
+}
 
-void Putting_Homework(string lesson, string duty);
+void teacher::putting_notification(string lesson, string note) 
+{
 
-void Putting_Notification(string lesson, string note);
+int andis = 0;
 
-void Putting_Attendance(string lesson);
+for(string i : Lesson.Lessons_List)
+{
 
-class student: public teacher {
+if(i.compare(lesson) == 0)
+{
 
-private:
+break;
 
-staitc void add_lesson(string lesson, string Name);
+}
 
-public:
+andis++;
 
-bool student_position = true;
+}
 
-friend void Add_Lesson(string lesson, string Name);
+notification.push_back(note);
 
-void See_Empty_Capactiy(string lesson);
+}
 
-void See_Notification(string lesson);
+void teacher::puttinh_attendance(string lesson)
+{
 
-void Putting_Score(string lesson, int number);
+int Present_Number;
 
-void See_Score(string lesson, string Name);
+int Absent_Number;
 
-void See_homework(string lesson);
+int andis = 0;
 
-void See_Classroom_Time(string lesson);
+for(string i : Lesson.Lessons_List)
+{
 
-void See_Classroom_Number(string lesson);
+if(i.compare(lesson) == 0)
+{
 
-void See_Units(string lesson);
+break;
 
-~student() {}
+}
 
-};
+andis++;
 
-void Add_Lesson(string lesson, string Name);
+}
 
-class admin {
+for(string i : Lesson.Students_List[andis])
+{
 
-private:
+cout << "please enter present_number for the student:" << endl;
 
-static void create_user(int choice);
+cin >> Present_Number;
 
-static void update();
+cout << "please enter absent_number for the student:" << endl;
 
-static void delete_user(string user, string Name);
+cin >> Absent_Number;
 
-static void restore(string user, string Name);
+}
 
-static void read();
+}
 
-public:
+void Create_Lesson(string Name, int Capacity, int Partical_Unit, int Theeory_Unit, int Classroom_Number, string Classroom_Time, string Teacher_Name)
+{
 
-static vector<teacher> Teacher;
+teacher Teacher;
 
-static vector<student> Student;
+Teacher.create_lesson(string Name, int Capacity, int Partical_Unit, int Theeory_Unit, int Classroom_Number, string Classroom_Time, string Teacher_Name);
 
-friend void Create_User(int choice, string Name, string Password);
+}
 
-friend void Update();
+void Putting_Homework(string lesson, string duty)
+{
 
-friend void Delete(string user, string Name);
+teacher Teacher;
 
-friend void Restore(string user, string Name);
+Teacher.putting_homework(lesson, duty);
 
-void Read();
+}
 
-};
+void Putting_Notification(string lesson, string note)
+{
 
-void Create_User(int choice, string Name = "Hello", string Password = "Hello");
+teacher Teacher;
 
-void Update();
+Teacher.putting_notification(lesson, note);
 
-void Delete(string user, string Name);
+}
 
-void Restore(string user, string Name);
+void Putting_Score(string lesson)
+{
 
-void Read();
+int andis = 0;
 
-#endif
+int Score;
+
+for(string i : Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+for(int k = 0; k < Lesson.Students_List[andis].size(); k++)
+{
+
+cout << "please enter a score:" << endl;
+
+cin >> Score;
+
+Lesson.teacher_put_score[andis].push_back(Score);
+
+}
+
+}
+
+void Putting_Attendance(string lesson)
+{
+
+teacher Teacher;
+
+Teacher.putting_attendance(lesson);
+
+}
+
+void student::add_lesson(string lesson, string Name)
+{
+
+int andis = 0;
+
+for(string i : Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+Lesson.Students_List[andis].push_back(Name);
+
+}
+
+void Add_Lesson(string Lesson, stringname)
+{
+
+student Student;
+
+Student.add_lesson(Lesson, Name);
+
+}
+
+void 
