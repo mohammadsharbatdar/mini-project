@@ -1,912 +1,686 @@
 #include "header.h"
 
-lesson Lesson;
-
-vector<teacher> admin::Teacher;
-
-vector<student> admin::Student;
-
-vector<string> admin::homework;
-
-vector<string> admin::notification;
-
-void teacher::create_lesson(string Name, int Capacity, int Partical_Uniit, int Theory_Unit, int Classroom_Number, string Classroom_Time, string Teacher_Name) {
-
-Name Name + " : " + Teacher_Name;
-
-Lesson.Lessons_List.push_back(Name);
-
-Lesson.Lessons_Capacity.push_back(Capacity);
-
-Lesson.partical_unit.push_back(Partical_Unit);
-
-Lesson.theory_unit.push_back(Theory_Unit);
-
-Lesson.classroom_number.push_back(Classroom_Number);
-
-Lesson.classroom_time.push_back(Classroom_Time);
-
-ofstream file("lesson.txt");
-
-file << "Units:\n";
-
-for(int i = 0; i < Lesson.Lessons_List.size(); i++)
-{
-
-file << "partical unit:\t" << Lesson.partical_unit[i] << "\ttheory unit:\t" << Lesson.theory_unit[i] << "\n";
-
-}
-
-file << "\nclassroom numbers:\n";
-
-for(int i = 0; i < Lesson.Lessons_List.size(); i++)
-{
-
-file << Lesson.classroom_number[i] << "\n";
-
-}
-
-file << "\nclassroom times:\n";
-
-for(int i = 0; i < Lesson.Lessons_List.size(); i++)
-{
-
-file << Lesson.classroom_time[i] << "\n";
-
-}
-
-file << "\nattendance list:\n";
-
-for(int i = 0; i < Lesson.Lessons_List.size(); i++)
-{
-
-file << "present:\t" << Lesson.present_list[i] << "\tabsent:\t" << Lesson.absent_list[i] << "\n"; 
-
-}
-
-file.close();
-
-}
-
-void teacher::putting_homework(string lesson, string duty) {
-
-int andis = 0;
-
-for(string i : Lesson.Lessons_List)
-{
-
-if(i.compare(lesson) == 0)
-{
-
-break;
-
-}
-
-andis++;
-
-}
-
-homework[andis] = duty;
-
-}
-
-void teacher::putting_notification(string lesson, string note) 
-{
-
-int andis = 0;
-
-for(string i : Lesson.Lessons_List)
-{
-
-if(i.compare(lesson) == 0)
-{
-
-break;
-
-}
-
-andis++;
-
-}
-
-notification.push_back(note);
-
-}
-
-void teacher::puttinh_attendance(string lesson)
-{
-
-int Present_Number;
-
-int Absent_Number;
-
-int andis = 0;
-
-for(string i : Lesson.Lessons_List)
-{
-
-if(i.compare(lesson) == 0)
-{
-
-break;
-
-}
-
-andis++;
-
-}
-
-for(string i : Lesson.Students_List[andis])
-{
-
-cout << "please enter present_number for the student:" << endl;
-
-cin >> Present_Number;
-
-cout << "please enter absent_number for the student:" << endl;
-
-cin >> Absent_Number;
-
-}
-
-}
-
-void Create_Lesson(string Name, int Capacity, int Partical_Unit, int Theeory_Unit, int Classroom_Number, string Classroom_Time, string Teacher_Name)
-{
-
-teacher Teacher;
-
-Teacher.create_lesson(string Name, int Capacity, int Partical_Unit, int Theeory_Unit, int Classroom_Number, string Classroom_Time, string Teacher_Name);
-
-}
-
-void Putting_Homework(string lesson, string duty)
-{
-
-teacher Teacher;
-
-Teacher.putting_homework(lesson, duty);
-
-}
-
-void Putting_Notification(string lesson, string note)
-{
-
-teacher Teacher;
-
-Teacher.putting_notification(lesson, note);
-
-}
-
-void Putting_Score(string lesson)
-{
-
-int andis = 0;
-
-int Score;
-
-for(string i : Lesson.Lessons_List)
-{
-
-if(i.compare(lesson) == 0)
-{
-
-break;
-
-}
-
-andis++;
-
-}
-
-for(int k = 0; k < Lesson.Students_List[andis].size(); k++)
-{
-
-cout << "please enter a score:" << endl;
-
-cin >> Score;
-
-Lesson.teacher_put_score[andis].push_back(Score);
-
-}
-
-}
-
-void Putting_Attendance(string lesson)
-{
-
-teacher Teacher;
-
-Teacher.putting_attendance(lesson);
-
-}
-
-void student::add_lesson(string lesson, string Name)
-{
-
-int andis = 0;
-
-for(string i : Lesson.Lessons_List)
-{
-
-if(i.compare(lesson) == 0)
-{
-
-break;
-
-}
-
-andis++;
-
-}
-
-Lesson.Students_List[andis].push_back(Name);
-
-}
-
-void Add_Lesson(string Lesson, stringname)
-{
-
-student Student;
-
-Student.add_lesson(Lesson, Name);
-
-}
-
-void student::See_Empty_Capacity(string lesson)
-{
-
-int andis = 0;
-
-int size;
-
-for(string i : Lesson.Lessons_List)
-{
-
-if(i.compare(lesson) == 0)
-{
-
-break;
-
-}
-
-andis++;
-
-}
-
-size = Lesson.Lessons_Capacity[andis] - Lesson.Students_List[andis].size();
-
-if(size >= 0)
-{
-
-cout << size << endl;
-
-}
-
-}
-
-void student::See_Notification(string lesson)
-{
-
-teacher Teacher;
-
-int andis = 0;
-
-for(string i : Lesson.Lessons_List)
-{
-
-if(i.compare(lesson) == 0)
-{
-
-break;
-
-}
-
-cout << Teacher.notification[andis] << endl;
-
-}
-
-}
-
-void student::Putting_Score(string lesson, int number)
-{
-
-int andis = 0;
-
-for(string i : Lesson.Lessons_List)
-{
-
-if(i.compare(lesson) == 0)
-{
-
-break;
-
-}
-
-andis++;
-
-}
-
-Lesson.student_put_score[andis] = number;
-
-}
-
-void student::See_Score(string lesson, string Name)
-{
-
-int andis_1 = 0;
-
-int andis_2 = 0;
-
-for(string i : Lesson.Lessons_List)
-{
-
-if(i.compare(lesson) == 0)
-{
-
-break;
-
-}
-
-
-andis_1++;
-
-}
-
-for(string i : Lesson.Students_List[andis_1])
-{
-
-if(i.compare(Name) == 0)
-{
-
-break;
-
-}
-
-andis_2++;
-
-}
-
-cout << Lesson.teacher_put_score[andis_1][andis_2] << endl;
-
-}
-
-void student::See_homework(string lesson)
-{
-
-teacher Teacher;
-
-int andis = 0;
-
-for(string i : Lesson.Lessons_List)
-{
-
-if(i.compare(lesson) == 0)
-{
-
-break;
-
-}
-
-andis++;
-
-}
-
-cout << Lesson.classroom_time[andis] << endl;
-
-}
-
-void student::See_Classroom_Number(string lesson)
-{
-
-int andis = 0;
-
-for(string i : Lesson.Lessons_List)
-{
-
-if(i.compare(lesson) == 0)
-{
-
-break;
-
-}
-
-andis++;
-
-}
-
-cout << Lesson.classroom_number[andis] << endl;
-
-}
-
-void student::See_Units(string lesson)
-{
-
-int andis = 0;
-
-for(string i : Lesson.Lessons_List)
-{
-
-if(i.compare(lesson) == 0)
-{
-
-break;
-
-}
-
-andis++;
-
-}
-
-cout << Lesson.partical_unit[andis] << endl << Lesson.theory_unit[andis] << endl;
-
-}
-
-void admin::create_user(int choice)
-{
-
-if(choice == 1)
-{
-
-Teacher.push_back(teacher());
-
-}
-else if(choice == 2)
-{
-
-Student.push_back(student());
-
-}
-
-}
-
-void admin::update()
-{
-
-oftream file("main.txt");
-
-file << "Lessons_List:\n";
-
-for(string i : Lesson.Lessons_List)
-{
-
-file << i << "\t";
-
-}
-
-file << "\nTeachers_List:\n";
-
-for(string i : Lesson.Teachers_List)
-{
-
-file << i;
-
-}
-
-file << "\n";
-
-ofstream file_1("teacher.txt");
-
-for(string i : Lesson.Teachers_List)
-{
-
-file_1 << i;
-
-}
-
-file_1.close();
-
-file << "Students_Score:\n";
-
-for(int i : Lesson.student_put_score)
-{
-
-file << i << "\t";
-
-}
-
-file << "\nTeacher_Score:\n";
-
-int andis = 0;
-
-for(vector<int> i : Lesson.teacher_put_score)
-{
-
-file << Lesson.Lessons_List[andis] << "\t:\t";
-
-for(int j : i)
-{
-
-file << j << "\t";
-
-file << "\n";
-
-andis++;
-
-}
-
-}
-
-ofstream file_2("student.txt");
-
-andis = 0;
-
-for(vector<string> i : Lesson.Students_List)
-{
-
-file_2 << Lesson.Lessons_List[andis] << "\t:\t";
-
-for(string j : i)
-{
-
-file_2 << j;
-
-}
-
-file_2.close();
-
-file << "\n";
-
-andis++;
-
-}
-
-file.close();
-
-ofstream file_hw("homework.txt");
-
-for(string i : teacher::homework)
-{
-
-file_hw << i;
-
-}
-
-file_hw.close();
-
-ofstream file_notif("notification.txt");
-
-for(string i : teacher::notification)
-{
-
-file_notif << i;
-
-}
-
-file_notif.close();
-
-ofstream file_cn("classroom_number.txt");
-
-for(int i : Lesson.classroom_number)
-{
-
-file_cn << i;
-
-}
-
-file_cn.close();
-
-ofstream file_ct("classroom_time.txt");
-
-for(string i : Lesson.classroom_time)
-{
-
-file_ct << i;
-
-}
-
-file_ct.close();
-
-ofstream file_lc("lessons_capacity.txt");
-
-for(int i : Lesson.Lessoons_Capacity)
-{
-
-file_lc << i;
-
-}
-
-file_lc.close();
-
-ofstream file_pu("partical_unit.txt");
-
-for(int i : Lesson.partical_unit)
-{
-
-file_pu << i;
-
-}
-
-file_pu.close();
-
-ofstream file_tu("theory_unit.txt");
-
-for(int i : Lesson.theory_unit)
-{
-
-file_tu << i;
-
-}
-
-file_tu.close();
-
-ofstream file_pl("present_list.txt");
-
-for(int i : Lesson.present_list)
-{
-
-file_pl << i;
-
-}
-
-file_pl.close();
-
-ofstream al("absent_list.txt");
-
-for(int i : Lesson.absent_list)
-{
-
-file_al << i;
-
-}
-
-file_al.close();
-
-ofstream file_ss("student_score.txt");
-
-for(int i : Lesson.student_put_score)
-{
-
-file_ss << i;
-
-}
-
-file_ss.close();
-
-ofstream file_ts("teacher_score.txt");
-
-for(vector<int> i : Lesson.teacher_put_score)
-{
-
-for(int j : i)
-{
-
-file_ts << j;
-
-}
-
-file_ts << "\n";
-
-}
-
-file_ts.close();
-
-}
-
-void admin::delete_user(string user, string Name)
-{
-
-if(user.compare("teacher") == 0)
-{
-
-int andis = 0;
-
-for(string i : Lesson.Teachers_List)
-{
-
-if(i.compare(Name) == 0)
-{
-
-break;
-
-}
-
-andis++;
-
-}
-
-Teacher.erase(Teacher.begin() + andis);
-
-Lesson.Teachers_List.erase(Lesson.Teachers_List.begin() + andis);
-
-}
-else if(user.compare("student") == 0)
-{
-
-int row = 0;
-
-int colum;
-
-for(vector<string> i : Lesson.Students_List)
-{
-
-colum = 0;
-
-for(string j : i)
-{
-
-if(j.compare(Name) == 0)
-{
-
-goto line757;
-
-}
-
-colum++;
-
-}
-
-row++;
-
-}
-
-line757:
-
-Student.erase(Student.begin() + ((row + 1) * (colum + 1) - 1);
-
-Lesson.Students_List[row].erase(Lesson.Students_LIst[row].begin() + colum);
-
-}
-
-}
-
-void admin::restor(string user, string Name)
-{
-
-if(user.compare("teacher") == 0)
-{
-
-int andis = 0;
-
-for(string i : Lesson.Teachers_List)
-{
-
-if(i.compare(Name) == 0)
-{
-
-break;
-
-}
-
-andis++;
-
-}
-
-Teacher[andis].teacher_position = false;
-
-}
-else if(user.compare("student") == 0)
-{
-
-int row = 0;
-
-int colum;
-
-for(vector<string> i : Lesson.Students_List)
-{
-
-colum = 0;
-
-for(string j : i)
-{
-
-if(j.compare(Name) == 0)
-{
-
-goto line822;
-
-}
-
-colum++;
-
-}
-
-row++;
-
-}
-
-line822:
-
-Student[((row + 1) * (colum + 1)) - 1].student_position = false;
-
-}
-
-}
-
-void admin::read()
+int main()
 {
 
-ifstream file("main.txt");
+ifstream file("teacher.txt");
 
 string line;
 
 while(getline(file, line))
 {
 
-cout << line << endl;
+Lesson.Teachers_List.push_back(line);
 
 }
 
 file.close();
 
-}
+ifstream file_st("student.txt");
 
-void Create_Usre(int choice, string Name, string Password)
+while(getline(file_st, line))
 {
 
-admin Admin;
-
-Admin.create_user(choice);
-
-if(Name.compare("Hello") != 0 && choice == 1)
-{
-
-Lesson.Teachers_List.push_back(Name);
-
-Lesson.Teachers_List.push_back("\n");
-
-if(Password.compare("Hello") != 0)
-{
-
-Lesson.Teachers_List.push_back(Password);
-
-Lesson.Teachers_List.push_back("\n");
+Lesson.Student_file.push_back(line);
 
 }
 
-}
-else if(Name.compare("Hello") != 0 && choice == 2)
+file_st.close();
+
+ifstream file_hw("homework.txt");
+
+while(getline(file_hw, line))
 {
 
-Lesson.Student_file.push_back(Name);
+teacher::homework.push_back(line);
 
-Lesson.Student_file.push_back("\n");
+}
 
-if(Password.compare("Hello") != 0 && choice == 2)
+file_hw.close();
+
+ifstream file_notif("notification");
+
+while(getline(file_notif, line))
 {
 
-Lesson.Student_file.push_back(Password);
-
-Lesson.Student_file.push_back("\n");
+teacher::notification.push_back(line);
 
 }
 
-}
+file_notif.close();
 
-}
+ifstream file_ss("student_score.txt");
 
-void Update()
+while(getline(file_ss, line))
 {
 
-admin Admin;
-
-Admin.update();
+Lesson.student_put_score.push_back(stoi(line));
 
 }
 
-void Delete(string user, string Name)
+file_ss.close();
+
+ifstream file_cn("classroom_number.txt");
+
+while(getline(file_cn, line))
 {
 
-admin Admin;
-
-Admin.delete_user(user, Name);
+Lesson.classroom_number.push_back(stoi(line));
 
 }
 
-void Restore(string user, string Name)
+file_cn.close();
+
+ifstream file_ct("classroom_time.txt");
+
+while(getline(file_ct, line))
 {
 
-admin Admin;
-
-Admin.restor(user, Name);
+Lesson.classroom_time.push_back(line);
 
 }
 
-void Read()
+file_ct.close();
+
+ifstream file_pu("partical_unit.txt");
+
+while(getline(file_pu, line))
 {
 
-admin Admin;
+Lesson.partical_unit.push_back(stoi(line));
 
-Admin.read();
+}
+
+file_pu.close();
+
+ifstream file_tu("theory_unit.txt");
+
+while(getline(file_tu, line))
+{
+
+Lesson.theory_unit.push_back(stoi(line));
+
+}
+
+file_tu.close();
+
+ifstream file_pl("present_list.txt");
+
+while(getline(file_pl, line))
+{
+
+Lesson.present_list.push_back(stoi(line));
+
+}
+
+file_pl.close();
+
+ifstream file_al("absent_list.txt");
+
+while(getline(file_al, line))
+{
+
+Lesson.absent_list.push_back(stoi(line));
+
+}
+
+file_al.close();
+
+ifstream file_lc("lessons_capacity.txt");
+
+while(getline(file_lc, line))
+{
+
+Lesson.Lessons_Capacity.push_back(stoi(line));
+
+}
+
+file_lc.close();
+
+ifstream file_ts("teacher_score.txt");
+
+int ands = 0;
+
+while(getline(file_ts, line))
+{
+
+if(line != "")
+{
+
+Lesson.teacher_put_score[andis].push_back(stoi(line));
+
+}
+else
+{
+
+andis++;
+
+}
+
+}
+
+file_ts.close();
+
+string username;
+
+string password;
+
+string line_1;
+
+string line_2;
+
+int selection_1;
+
+int selection_2;
+
+for(int i = 0; i >= 0; i++)
+{
+
+line1272:
+
+cout << "1. Admin.\n2. Teacher.\n3. Student.\n4. Exit." << endl;
+
+cin >> selection_1;
+
+if(selection_1 == 1)
+{
+
+bool Position;
+
+for(int j = 0; j >= 0; j++)
+{
+
+ifstream file_1("admin.txt");
+
+cout << "please enter your username:" << endl;
+
+cin >> username;
+
+cout << "please enter your password:" << endl;
+
+cin >> password;
+
+while(getline(file_1, line_1))
+{
+
+if(username.compare(linr_1) == 0)
+{
+
+Position = true;
+
+getline(file_1, line_2);
+
+if(password.compare(line_2) == 0 && Position == true)
+{
+
+goto line1327;
+
+}
+else
+{
+
+break;
+
+}
+
+}
+
+}
+
+file_1.close();
+
+}
+
+line1327:
+
+for(int j == 0; j >= 0; j++)
+{
+
+cout << "1. Create_User.\n2. Update.\n3. Read.\n4. Restore.\n5. Delete.\n6. Back." << endl;
+
+cin >> selection_2;
+
+int choice;
+
+string Name;
+
+string Lesson;
+
+string Password;
+
+switch(selection_2)
+{
+
+case 1:
+
+cout << "1. teacher.\n2. student." << endl;
+
+cin >> choice;
+
+cout << "please enter a name:" << endl;
+
+cin >> Name;
+
+cout << "please enter a password:" << endl;
+
+cin >> Password;
+
+Create_User(choice, Name, Password);
+
+break;
+
+case 2:
+
+Update();
+
+break;
+
+case 3:
+
+Read();
+
+break;
+
+case 4:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+cout << "please enter a name:" << endl;
+
+cin >> Name;
+
+Delete(Lesson, Name);
+
+break;
+
+case 6:
+
+Position = false;
+
+goto line1272;
+
+break;
+
+}
+
+}
+
+}
+else if(selection_1 == 2)
+{
+
+bool Position;
+
+for(int j = 0; j >= 0; j++)
+{
+
+ifstream file_2("teacher.txt");
+
+cout << "please enter your username:" << endl;
+
+cin >> username;
+
+cout << "please enter your password:" << endl;
+
+cin >> password;
+
+while(getline(file_2, line_1))
+{
+
+if(username.compare(line_1) == 0)
+{
+
+Position = true;
+
+getline(file_2, line_2);
+
+if(password.compare(line_2) == 0 && Position == true)
+{
+
+goto line1466;
+
+}
+else
+{
+
+break;
+
+}
+
+}
+
+}
+
+file_2.close();
+
+}
+
+line1466:
+
+for(int j = 0; j >= 0; j++)
+{
+
+cout << "1. Create_Lesson.\n2. Putting_Homework.\n3. Putting_Notification.\n4. Putting_Score.\n5. Putting_Attendance.\n6. Back." << endl;
+
+cin >> selection_2;
+
+string Name;
+
+string duty;
+
+string note;
+
+string Lesson;
+
+string Classroom_Time;
+
+string Teacher_Name;
+
+int Classroom_Number;
+
+int Capacity;
+
+int Partical_Unit;
+
+int Theory_Unit;
+
+switch(selection_2)
+{
+
+case 1:
+
+cout << "please enter a name:" << endl;
+
+cin >> Name;
+
+cout << "please enter a Capacity:" << endl;
+
+cin >> Capacity;
+
+cout << "please enter partical_unit:" << endl;
+
+cin >> Partical_Unit;
+
+cout << "please enter a theory_unit:" << endl;
+
+cin >> Theory_Unit;
+
+cout << "please enter a classroom_number:" << endl;
+
+cin >> Classroom_Number;
+
+cout << "please enter a classroom_time:" << endl;
+
+cin >> Classroom_Time;
+
+cout << "please enter a Teacher_Name:" << endl;
+
+cin >> Teacher_Name;
+
+Create_Lesson(Name, Capacity, Partical_Unit, Theory_Unit, Classroom_Number, Classroom_Time, Teacher_Name);
+
+break;
+
+case 2:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+cout << "please write a duty:" << endl;
+
+getline(cin, duty);
+
+Putting_Homework(Lesson, duty);
+
+break;
+
+case 3:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+cout << "please write a note:" << endl;
+
+getline(cin, note);
+
+Putting_Notification(Lesson, note);
+
+break;
+
+case 4:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+Putting_Score(Lesson);
+
+break;
+
+case 5:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+Putting_Attendance(Lesson);
+
+break;
+
+case 6:
+
+Position = false;
+
+goto line1272;
+
+break;
+
+}
+
+}
+else if(selection_1 == 3)
+{
+
+vool Position;
+
+for(int j = 0; j >= 0; j++)
+{
+
+ifstream file_2("teacher.txt");
+
+cout << "please enter your username:" << endl;
+
+cin >> username;
+
+cout << "please enter your password:" << endl;
+
+cin >> password;
+
+while(getline(file_2, line_1))
+{
+
+if(username.compare(line_1) == 0)
+{
+
+Position = true;
+
+getline(file_2, line_2);
+
+if(username.compare(line_1) == 0)
+{
+
+if(password.compare(line_2) == 0 && Position == true)
+{
+
+goto line1639;
+
+}
+else
+{
+
+break;
+
+}
+
+}
+
+}
+
+file_2.close();
+
+}
+
+
+line1639:
+
+for(int j = 0; j >= 0; j++)
+{
+
+cout << "1. Add_Lesson.\n2. See_Empty_Capacity.\n3. See_Notification.\n4. Putting_Score.\n5. See_Score.\n6. See_homework.\n7. See_Classroom_Time.\n8. See_Classroom_Number.\n9. See_Units.\n10. Back." << endl;
+
+cin >> selection_2;
+
+student S;
+
+string Lesson;
+
+string Name;
+
+int number;
+
+switch(selection_2)
+{
+
+case 1:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+cout << "please enter a name:" << endl;
+
+cin >> Name;
+
+Add_Lesson(Lesson, Name);
+
+break;
+
+case 2:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+S.See_Empty_Capacity(Lesson);
+
+break;
+
+case 3:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+S.See_Notification(Lesson);
+
+break;
+
+case 4:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+cout << "please enter a number:" << endl;
+
+cin >> number;
+
+S.Putting_Score(Lesson, number);
+
+break;
+
+case 5:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+cout << "please enter a name:" << endl;
+
+cin >> Name;
+
+break;
+
+case 6:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+S.See_homework(Lesson);
+
+break;
+
+case 7:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+S.See_Classroom_Time(Lesson);
+
+break;
+
+case 8:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+S.See_Classroom_Number(Lesson);
+
+break;
+
+case 9:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+S.See_Units(Lesson);
+
+break;
+
+case 10:
+
+Position = false;
+
+goto line1272;
+
+break;
+
+}
+
+}
+
+}
+else if(selection_1 == 4)
+{
+
+exit(0);
+
+}
+
+}
+
+}
+
+}
+
+return 0;
 
 }
