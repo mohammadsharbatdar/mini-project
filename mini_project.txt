@@ -139,7 +139,7 @@ file_lc.close();
 
 ifstream file_ts("teacher_score.txt");
 
-int ands = 0;
+int andis = 0;
 
 while(getline(file_ts, line))
 {
@@ -291,9 +291,21 @@ cout << "please enter a name:" << endl;
 
 cin >> Name;
 
-Delete(Lesson, Name);
+Restore(Lesson, Name);
 
 break;
+
+case 5:
+
+cout << "please enter a lesson:" << endl;
+
+cin >> Lesson;
+
+cout << "please enter a name:" << endl;
+
+cin >> Name;
+
+Delete(Lesson, Name);
 
 case 6:
 
@@ -482,10 +494,12 @@ break;
 }
 
 }
+
+}
 else if(selection_1 == 3)
 {
 
-vool Position;
+bool Position;
 
 for(int j = 0; j >= 0; j++)
 {
@@ -510,7 +524,7 @@ Position = true;
 
 getline(file_2, line_2);
 
-if(username.compare(line_1) == 0)
+if(password.compare(line_1) == 0)
 {
 
 if(password.compare(line_2) == 0 && Position == true)
@@ -613,6 +627,8 @@ cout << "please enter a name:" << endl;
 
 cin >> Name;
 
+S.See_Score(Lesson, Name);
+
 break;
 
 case 6:
@@ -672,10 +688,6 @@ else if(selection_1 == 4)
 {
 
 exit(0);
-
-}
-
-}
 
 }
 
