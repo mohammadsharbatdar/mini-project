@@ -525,6 +525,8 @@ andis++;
 
 }
 
+}
+
 ofstream file_2("student.txt");
 
 andis = 0;
@@ -573,5 +575,338 @@ file_notif << i;
 
 file_notif.close();
 
+ofstream file_cn("classroom_number.txt");
+
+for(int i : Lesson.classroom_number)
+{
+
+file_cn << i;
+
 }
+
+file_cn.close();
+
+ofstream file_ct("classroom_time.txt");
+
+for(string i : Lesson.classroom_time)
+{
+
+file_ct << i;
+
+}
+
+file_ct.close();
+
+ofstream file_lc("lessons_capacity.txt");
+
+for(int i : Lesson.Lessoons_Capacity)
+{
+
+file_lc << i;
+
+}
+
+file_lc.close();
+
+ofstream file_pu("partical_unit.txt");
+
+for(int i : Lesson.partical_unit)
+{
+
+file_pu << i;
+
+}
+
+file_pu.close();
+
+ofstream file_tu("theory_unit.txt");
+
+for(int i : Lesson.theory_unit)
+{
+
+file_tu << i;
+
+}
+
+file_tu.close();
+
+ofstream file_pl("present_list.txt");
+
+for(int i : Lesson.present_list)
+{
+
+file_pl << i;
+
+}
+
+file_pl.close();
+
+ofstream al("absent_list.txt");
+
+for(int i : Lesson.absent_list)
+{
+
+file_al << i;
+
+}
+
+file_al.close();
+
+ofstream file_ss("student_score.txt");
+
+for(int i : Lesson.student_put_score)
+{
+
+file_ss << i;
+
+}
+
+file_ss.close();
+
+ofstream file_ts("teacher_score.txt");
+
+for(vector<int> i : Lesson.teacher_put_score)
+{
+
+for(int j : i)
+{
+
+file_ts << j;
+
+}
+
+file_ts << "\n";
+
+}
+
+file_ts.close();
+
+}
+
+void admin::delete_user(string user, string Name)
+{
+
+if(user.compare("teacher") == 0)
+{
+
+int andis = 0;
+
+for(string i : Lesson.Teachers_List)
+{
+
+if(i.compare(Name) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+Teacher.erase(Teacher.begin() + andis);
+
+Lesson.Teachers_List.erase(Lesson.Teachers_List.begin() + andis);
+
+}
+else if(user.compare("student") == 0)
+{
+
+int row = 0;
+
+int colum;
+
+for(vector<string> i : Lesson.Students_List)
+{
+
+colum = 0;
+
+for(string j : i)
+{
+
+if(j.compare(Name) == 0)
+{
+
+goto line757;
+
+}
+
+colum++;
+
+}
+
+row++;
+
+}
+
+line757:
+
+Student.erase(Student.begin() + ((row + 1) * (colum + 1) - 1);
+
+Lesson.Students_List[row].erase(Lesson.Students_LIst[row].begin() + colum);
+
+}
+
+}
+
+void admin::restor(string user, string Name)
+{
+
+if(user.compare("teacher") == 0)
+{
+
+int andis = 0;
+
+for(string i : Lesson.Teachers_List)
+{
+
+if(i.compare(Name) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+Teacher[andis].teacher_position = false;
+
+}
+else if(user.compare("student") == 0)
+{
+
+int row = 0;
+
+int colum;
+
+for(vector<string> i : Lesson.Students_List)
+{
+
+colum = 0;
+
+for(string j : i)
+{
+
+if(j.compare(Name) == 0)
+{
+
+goto line822;
+
+}
+
+colum++;
+
+}
+
+row++;
+
+}
+
+line822:
+
+Student[((row + 1) * (colum + 1)) - 1].student_position = false;
+
+}
+
+}
+
+void admin::read()
+{
+
+ifstream file("main.txt");
+
+string line;
+
+while(getline(file, line))
+{
+
+cout << line << endl;
+
+}
+
+file.close();
+
+}
+
+void Create_Usre(int choice, string Name, string Password)
+{
+
+admin Admin;
+
+Admin.create_user(choice);
+
+if(Name.compare("Hello") != 0 && choice == 1)
+{
+
+Lesson.Teachers_List.push_back(Name);
+
+Lesson.Teachers_List.push_back("\n");
+
+if(Password.compare("Hello") != 0)
+{
+
+Lesson.Teachers_List.push_back(Password);
+
+Lesson.Teachers_List.push_back("\n");
+
+}
+
+}
+else if(Name.compare("Hello") != 0 && choice == 2)
+{
+
+Lesson.Student_file.push_back(Name);
+
+Lesson.Student_file.push_back("\n");
+
+if(Password.compare("Hello") != 0 && choice == 2)
+{
+
+Lesson.Student_file.push_back(Password);
+
+Lesson.Student_file.push_back("\n");
+
+}
+
+}
+
+}
+
+void Update()
+{
+
+admin Admin;
+
+Admin.update();
+
+}
+
+void Delete(string user, string Name)
+{
+
+admin Admin;
+
+Admin.delete_user(user, Name);
+
+}
+
+void Restore(string user, string Name)
+{
+
+admin Admin;
+
+Admin.restor(user, Name);
+
+}
+
+void Read()
+{
+
+admin Admin;
+
+Admin.read();
+
 }
