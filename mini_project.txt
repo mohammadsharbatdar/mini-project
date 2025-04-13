@@ -253,4 +253,325 @@ Student.add_lesson(Lesson, Name);
 
 }
 
-void 
+void student::See_Empty_Capacity(string lesson)
+{
+
+int andis = 0;
+
+int size;
+
+for(string i : Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+size = Lesson.Lessons_Capacity[andis] - Lesson.Students_List[andis].size();
+
+if(size >= 0)
+{
+
+cout << size << endl;
+
+}
+
+}
+
+void student::See_Notification(string lesson)
+{
+
+teacher Teacher;
+
+int andis = 0;
+
+for(string i : Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+cout << Teacher.notification[andis] << endl;
+
+}
+
+}
+
+void student::Putting_Score(string lesson, int number)
+{
+
+int andis = 0;
+
+for(string i : Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+Lesson.student_put_score[andis] = number;
+
+}
+
+void student::See_Score(string lesson, string Name)
+{
+
+int andis_1 = 0;
+
+int andis_2 = 0;
+
+for(string i : Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+
+andis_1++;
+
+}
+
+for(string i : Lesson.Students_List[andis_1])
+{
+
+if(i.compare(Name) == 0)
+{
+
+break;
+
+}
+
+andis_2++;
+
+}
+
+cout << Lesson.teacher_put_score[andis_1][andis_2] << endl;
+
+}
+
+void student::See_homework(string lesson)
+{
+
+teacher Teacher;
+
+int andis = 0;
+
+for(string i : Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+cout << Lesson.classroom_time[andis] << endl;
+
+}
+
+void student::See_Classroom_Number(string lesson)
+{
+
+int andis = 0;
+
+for(string i : Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+cout << Lesson.classroom_number[andis] << endl;
+
+}
+
+void student::See_Units(string lesson)
+{
+
+int andis = 0;
+
+for(string i : Lesson.Lessons_List)
+{
+
+if(i.compare(lesson) == 0)
+{
+
+break;
+
+}
+
+andis++;
+
+}
+
+cout << Lesson.partical_unit[andis] << endl << Lesson.theory_unit[andis] << endl;
+
+}
+
+void admin::create_user(int choice)
+{
+
+if(choice == 1)
+{
+
+Teacher.push_back(teacher());
+
+}
+else if(choice == 2)
+{
+
+Student.push_back(student());
+
+}
+
+}
+
+void admin::update()
+{
+
+oftream file("main.txt");
+
+file << "Lessons_List:\n";
+
+for(string i : Lesson.Lessons_List)
+{
+
+file << i << "\t";
+
+}
+
+file << "\nTeachers_List:\n";
+
+for(string i : Lesson.Teachers_List)
+{
+
+file << i;
+
+}
+
+file << "\n";
+
+ofstream file_1("teacher.txt");
+
+for(string i : Lesson.Teachers_List)
+{
+
+file_1 << i;
+
+}
+
+file_1.close();
+
+file << "Students_Score:\n";
+
+for(int i : Lesson.student_put_score)
+{
+
+file << i << "\t";
+
+}
+
+file << "\nTeacher_Score:\n";
+
+int andis = 0;
+
+for(vector<int> i : Lesson.teacher_put_score)
+{
+
+file << Lesson.Lessons_List[andis] << "\t:\t";
+
+for(int j : i)
+{
+
+file << j << "\t";
+
+file << "\n";
+
+andis++;
+
+}
+
+ofstream file_2("student.txt");
+
+andis = 0;
+
+for(vector<string> i : Lesson.Students_List)
+{
+
+file_2 << Lesson.Lessons_List[andis] << "\t:\t";
+
+for(string j : i)
+{
+
+file_2 << j;
+
+}
+
+file_2.close();
+
+file << "\n";
+
+andis++;
+
+}
+
+file.close();
+
+ofstream file_hw("homework.txt");
+
+for(string i : teacher::homework)
+{
+
+file_hw << i;
+
+}
+
+file_hw.close();
+
+ofstream file_notif("notification.txt");
+
+for(string i : teacher::notification)
+{
+
+file_notif << i;
+
+}
+
+file_notif.close();
+
+}
+}
